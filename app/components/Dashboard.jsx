@@ -7,6 +7,7 @@ import {
   FiUsers,
   FiSettings,
   FiBarChart2,
+  FiList,
 } from "react-icons/fi";
 import TopBar from "./layout/TopBar";
 import DashboardSection from "./layout/DashboardSection";
@@ -15,6 +16,7 @@ import ReportsSection from "./layout/ReportsSection";
 import SettingsSection from "./layout/SettingsSection";
 import SalesSection from "./layout/SalesSection";
 import { usePersonalizationStore } from "../stores/usePersonalizationStore";
+import SchedulingSection from "./layout/ScheduleSections";
 
 export default function DashboardPage() {
   const [activeSection, setActiveSection] = useState("patients");
@@ -42,8 +44,8 @@ export default function DashboardPage() {
         return (
           <DashboardSection stats={mockStats} topServices={mockTopServices} />
         );
-      case "sales":
-        return <SalesSection />;
+      case "scheduling":
+        return <SchedulingSection />;
       case "patients":
         return <PatientsSection />;
       case "reports":
@@ -113,6 +115,18 @@ export default function DashboardPage() {
                   }}
                 >
                   <FiUsers /> Patients
+                </a>
+              </li>
+
+              <li>
+                <a
+                  className={getLinkClasses("scheduling")}
+                  onClick={() => {
+                    setActiveSection("scheduling");
+                    document.getElementById("dashboard-drawer").checked = false;
+                  }}
+                >
+                  <FiList /> Schedules
                 </a>
               </li>
             </ul>

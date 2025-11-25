@@ -22,7 +22,9 @@ export default function AuthForm({ handleSubmit, submitType, onToggle }) {
       <form onSubmit={onSubmit} className="card-body space-y-6 p-8">
         {/* Title */}
         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[var(--theme-color)] text-center">
-          {submitType === "Sign Up" ? "Create an Account" : "Welcome Back"}
+          {submitType === "Get Instant Access"
+            ? "Create an Account"
+            : "Welcome Back"}
         </h2>
 
         {/* Email */}
@@ -84,7 +86,7 @@ export default function AuthForm({ handleSubmit, submitType, onToggle }) {
         {/* Toggle */}
         {onToggle && (
           <p className="text-center text-sm text-gray-600">
-            {submitType === "Sign Up" ? (
+            {submitType === "Get Instant Access" ? (
               <>
                 Already have an account?{" "}
                 <button

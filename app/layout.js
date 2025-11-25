@@ -22,20 +22,6 @@ export default function RootLayout({ children }) {
     getCurrentUser();
   }, [getCurrentUser]);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    const user = await login(form.get("email"), form.get("password"));
-    if (user) router.push("/"); // ✅ safe navigation
-  };
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    const user = await register(form.get("email"), form.get("password"));
-    if (user) router.push("/"); // ✅ safe navigation
-  };
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="transition-colors duration-300 ">
