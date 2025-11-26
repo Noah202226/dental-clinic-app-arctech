@@ -623,7 +623,10 @@ const App = () => {
                 className="select select-bordered w-full"
                 value={newEvent.duration}
                 onChange={(e) =>
-                  setNewEvent((p) => ({ ...p, duration: e.target.value }))
+                  setNewEvent((p) => ({
+                    ...p,
+                    duration: parseInt(e.target.value),
+                  }))
                 }
               >
                 {[15, 30, 45, 60, 90, 120].map((v) => (
