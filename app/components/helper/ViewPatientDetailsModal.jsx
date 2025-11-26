@@ -9,6 +9,8 @@ import { useNotesStore } from "../../stores/useNotesStore";
 import { useMedicalHistoryStore } from "../../stores/useMedicalHistoryStore";
 import { useTreatmentPlanStore } from "../../stores/useTreatmentPlanStore";
 import { usePaymentStore } from "@/app/stores/usePaymentStore";
+import { useDentalChartStore } from "@/app/stores/useDentalChartStore";
+
 import PaymentModal from "./PaymentModal";
 import PaymentSectionCard from "./PaymentSectionCard";
 import ConsentFormModal from "./ConsentFormModal";
@@ -28,6 +30,7 @@ export default function ViewPatientDetailsModal({ patient, isOpen, onClose }) {
   const medHistory = useMedicalHistoryStore();
   const treatment = useTreatmentPlanStore();
   const paymentStore = usePaymentStore();
+  const dentalChart = useDentalChartStore();
 
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -52,6 +55,7 @@ export default function ViewPatientDetailsModal({ patient, isOpen, onClose }) {
       notes.fetchItems(patient.$id);
       medHistory.fetchItems(patient.$id);
       treatment.fetchItems(patient.$id);
+      dentalChart.fetchItems(patient.$id);
       setUpdatedPatient({ ...patient });
       fetchTransactions();
     }
@@ -240,6 +244,16 @@ export default function ViewPatientDetailsModal({ patient, isOpen, onClose }) {
                 ))
               ) : (
                 <>
+                  <SectionCard
+                    title="Dental Chart"
+                    count={dentalChart.items.length} // optional if you want to track chart entries
+                    onClick={() =>
+                      setActiveSection({
+                        title: "Dental Chart",
+                        collectionId: "dentalchart",
+                      })
+                    }
+                  />
                   <SectionCard
                     title="Medical History"
                     count={medHistory.items.length}
