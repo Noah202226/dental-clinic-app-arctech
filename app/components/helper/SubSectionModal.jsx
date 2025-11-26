@@ -305,31 +305,40 @@ export default function SubSectionModal({
                 </div>
               </div>
               {/* 🏆 END LEGEND SECTION */}
-              {/* Update Tooth Panel */}             {" "}
+
+              {/* Update Tooth Panel */}
               {selectedTooth && (
                 <div className="mt-4 bg-[#EDE6D2] p-3 rounded-xl">
                   <p className="font-semibold mb-2">
                     Update Tooth {selectedTooth}           
                   </p>
-                  {/* 🏆 NEW: INSTRUCTION/LEGEND BLOCK */}
-                  <div className="mb-4 p-2 bg-white rounded-lg border border-[#DCD1B4]">
+                  {/* 🏆 NEW: INSTRUCTION/LEGEND BLOCK - OPTIMIZED FOR MOBILE */}
+                  <div className="mb-3 p-2 bg-white rounded-lg border border-[#DCD1B4]">
                     <h5 className="font-bold text-sm text-[#1E2B1F] mb-1">
-                      How to Update Tooth Status:
+                      How to Update Tooth Status:        
                     </h5>
-                    <ul className="list-disc list-inside text-xs text-gray-700 space-y-0.5">
-                      <li>
-                        **Save Note:** Simply type your note and then click any
-                        status button (**Healthy, Caries, or Filled**) to save
-                        both the note and the status.
+
+                    {/* 📌 MODIFICATION: Use simpler dashes for list items and tighter spacing (space-y-0) */}
+
+                    <ul className="text-[11px] sm:text-xs text-gray-700 space-y-0">
+                      <li className="flex items-start">
+                        <span className="mr-1 mt-[2px]">-</span>
+                        **Save Note:** Type your note and click any status
+                        button (**Healthy, Caries, or Filled**) to save both the
+                        note and the status.
                       </li>
-                      <li>
-                        **Mark Healthy:** Click the **Healthy** button to
-                        **clear** any existing status (Caries/Filled) and mark
-                        the tooth as healthy (no damage).
+
+                      <li className="flex items-start">
+                        <span className="mr-1 mt-[2px]">-</span>
+                        **Mark Healthy:** Click **Healthy** to **clear** any
+                        existing status and mark the tooth as healthy (no
+                        damage).
                       </li>
-                      <li>
+
+                      <li className="flex items-start">
+                        <span className="mr-1 mt-[2px]">-</span>
                         **Apply Status:** Click **Caries** or **Filled** to
-                        apply that status to the tooth.
+                        apply that specific status to the tooth.            
                       </li>
                     </ul>
                   </div>
@@ -359,7 +368,7 @@ export default function SubSectionModal({
                       onClick={() => updateToothStatus("healthy")}
                     >
                       {/* 📌 RESPONSIVE TEXT/ICON */}
-                      <span className="sm:hidden">✓</span>
+                      <span className="sm:hidden">✅</span>
                       {/* Icon for mobile */}
                       <span className="hidden sm:inline">Healthy</span>
                       {/* Text for desktop */}
@@ -370,7 +379,7 @@ export default function SubSectionModal({
                       onClick={() => updateToothStatus("caries")}
                     >
                       {/* 📌 RESPONSIVE TEXT/ICON */}
-                      <span className="sm:hidden">❌</span>
+                      <span className="sm:hidden">⚠️</span>
                       {/* Icon for mobile */}
                       <span className="hidden sm:inline">Caries</span>
                       {/* Text for desktop */}
@@ -381,7 +390,7 @@ export default function SubSectionModal({
                       onClick={() => updateToothStatus("filled")}
                     >
                       {/* 📌 RESPONSIVE TEXT/ICON */}
-                      <span className="sm:hidden">◩</span>
+                      <span className="sm:hidden">🛠️</span>
                       {/* Icon for mobile (square/fill) */}
                       <span className="hidden sm:inline">Filled</span>
                       {/* Text for desktop */}
